@@ -1,0 +1,32 @@
+[
+  {
+    "pokeId": 1,
+    "name": "Bulbasaur",
+    "appearPower": 70
+  },
+  {
+    "pokeId": 2,
+    "name": "Ivysaur",
+    "appearPower": 30
+  },
+  {
+    "pokeId": 3,
+    "name": "Venusaur",
+    "appearPower": 10
+  },
+  {
+    "pokeId": 4,
+    "name": "Charmander",
+    "appearPower": 70
+  },
+  {
+    "pokeId": 5,
+    "name": "Charmeleon",
+    "appearPower": 40
+  },
+  {
+    "pokeId": 6,
+    "name": "Charizard",
+    "appearPower": 5
+  }
+]
