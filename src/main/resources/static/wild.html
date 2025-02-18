@@ -14,7 +14,8 @@
 
 <script>
     async function getPoke() {
-        await fetch('http://localhost:8080/wild/1', {
+
+        await fetch('http://localhost:8080/wild/getPoke', {
             method: "GET"
         }).then(result =>    result.text())
             .then(text => alert(text));
