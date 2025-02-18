@@ -2,4 +2,4 @@
 GET http://localhost:8080/wild
 
 ### Find by ID
-GET http://localhost:8080/wild/1
+GET http://localhost:8080/wild/2

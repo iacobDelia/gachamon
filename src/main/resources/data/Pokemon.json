@@ -1,31 +1,31 @@
 [
   {
-    "pokeId": 1,
+    "id": null,
     "name": "Bulbasaur",
     "appearPower": 70
   },
   {
-    "pokeId": 2,
+    "id": null,
     "name": "Ivysaur",
     "appearPower": 30
   },
   {
-    "pokeId": 3,
+    "id": null,
     "name": "Venusaur",
     "appearPower": 10
   },
   {
-    "pokeId": 4,
+    "id": null,
     "name": "Charmander",
     "appearPower": 70
   },
   {
-    "pokeId": 5,
+    "id": null,
     "name": "Charmeleon",
     "appearPower": 40
   },
   {
-    "pokeId": 6,
+    "id": null,
     "name": "Charizard",
     "appearPower": 5
   }
