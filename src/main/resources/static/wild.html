@@ -9,17 +9,26 @@
 
 <h2>Get pokemon</h2>
 
-<!--<input id="fileupload" type="file" name="fileupload" />-->
 <button id="upload-button" onclick="getPoke()"> Get Poke </button>
+
+<img id = "currentPokeImage" src="images/pokemon/1.png" alt="bulbasaur">
 
 <script>
     async function getPoke() {
-
+        // changes the image source
         await fetch('http://localhost:8080/wild/getPoke', {
             method: "GET"
         }).then(result =>    result.text())
-            .then(text => alert(text));
+            .then(
+                function(text){
+                    let data = JSON.parse(text);
+                    document.getElementById("currentPokeImage").src = "images/pokemon/" + data.id.toString() + ".png";
+                }
+            );
     }
 </script>
+
+
+
 </body>
 </html>
