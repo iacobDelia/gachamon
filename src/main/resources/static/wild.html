@@ -48,16 +48,7 @@ body {
     /*flex-shrink: 0;*/
 
 }
-#nameBox{
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    height: 25%;
-    width: 30%;
-    padding-right: 420px;
-    min-height: 80px;
-    min-width: 600px;
-}
+
 .allContentContainer {
     height:100vh;
     width:100%;
@@ -65,9 +56,11 @@ body {
     flex-direction: column;
 }
 #pokeName{
-    transform: translate(5vh, 9vh);
+    position: absolute;
     font-size: 60px;
     color: #404040;
+    z-index: 0;
+    translate: -10vh -10vh;
     font-family: "Pokemon classic";
 }
 .footer{
@@ -116,8 +109,28 @@ body {
     translate: 10.7vh 6vh;
 }
 .leftUpperContainer{
+    translate: -50vh;
     display: flex;
     flex-direction: column;
+}
+.nameBoxContainer{
+    translate: -30vh 7vh;
+}
+#trainerSprite{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    height: 50%;
+    width: 350%;
+    translate: 0 18.3vh;
+}
+#nameBoxImage {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    translate: -14vh 5vh;
+    height: 80%;
+    width: 650%;
 }
 </style>
 
@@ -126,10 +139,13 @@ body {
 
     <div class = "upper">
         <img id = "currentPokeImage" src="images/pokemon/0000.png" alt="bulbasaur">
+
+
         <div class = "leftUpperContainer">
-            <div class = "nameBox">
-                <p id = pokeName>Bulbasaur</p>
+            <div class ="nameBoxContainer">
+
                 <img id = "nameBoxImage" src="images/misc/nameBox.png" alt="nameBox">
+                <p id = pokeName>Bulbasaur</p>
             </div>
 
             <img id = "trainerSprite" src="images/misc/dawnBack.png" alt="trainerSprite">
