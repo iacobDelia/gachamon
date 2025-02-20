@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    @font-face {
+        font-family: 'Pokemon classic';
+        src: url("images/misc/pokemon-emerald.ttf");
+    }
+    body {
+        background-image: url("images/misc/boxBackground.png");
+    }
+    #box {
+        position: absolute;
+        height: 70%;
+        width: 50%;
+        translate: 46vh 15vh;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+    }
+    .arrow {
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        height: 7%;
+        width: 3%;
+        position: absolute;
+        cursor: pointer;
+    }
+    #rightArrow {
+        translate: 133vh 17vh;
+    }
+    #leftArrow {
+        translate: 47vh 17vh;
+    }
+    .boxText {
+        font-family: "Pokemon classic";
+        font-size: 70px;
+        position: absolute;
+    }
+    #boxName {
+        translate: 87vh 9.5vh;
+        color: white;
+    }
+    #boxNameShadow {
+        translate: 87.5vh 10vh;
+        color: #44503f;
+    }
+
+</style>
+<body>
+    <img id = "box" src="images/misc/box1.png" alt="box">
+    <img id = "rightArrow" src="images/misc/boxArrowRight.png" alt="rightArrow" class="arrow" onclick="changeBox(1)">
+    <img id = "leftArrow" src="images/misc/boxArrowLeft.png" alt="leftArrow" class="arrow" onclick="changeBox(-1)">
+
+    <p id="boxNameShadow" class="boxText">Box 1</p>
+    <p id="boxName" class="boxText">Box 1</p>
+
+
+</body>
+<script>
+    var currentBox = 1;
+    var numMaxBoxes = 2;
+
+    function changeBox(num) {
+        if (this.currentBox + num > 0 && this.currentBox + num <= numMaxBoxes) {
+            this.currentBox += num;
+            document.getElementById("box").src = "images/misc/box" + this.currentBox.toString() + ".png";
+            document.getElementById("boxName").textContent = "Box " + this.currentBox.toString();
+            document.getElementById("boxNameShadow").textContent = "Box " + this.currentBox.toString();
+
+        }
+    }
+
+
+
+</script>
+</html>

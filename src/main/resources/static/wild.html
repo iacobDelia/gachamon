@@ -1,17 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml" xmlns:translate="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<style>
+body {
 
-<h2>Get pokemon</h2>
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'Pokemon classic';
+    src: url("images/misc/pokemon-emerald.ttf");
+}
+#currentPokeImage {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    height: 25%;
+    width: 25%;
+    min-height: 500px;
+    min-width: 104px;
+    padding-top: 60px;
+    padding-right: 220px;
+}
+.upper{
+    background-image: url("images/misc/GrassyField.webp");
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    /*background-clip: border-box;*/
+    background-size: 100% 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 
-<button id="upload-button" onclick="getPoke()"> Get Poke </button>
 
-<img id = "currentPokeImage" src="images/pokemon/1.png" alt="bulbasaur">
+    flex:7.5;
+    display: flex;
+    /*height: 100%;*/
+    /*width: 100%;*/
+    flex-direction: row-reverse;
+    /*flex-shrink: 0;*/
+
+}
+
+.allContentContainer {
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+#pokeName{
+    position: absolute;
+    font-size: 60px;
+    color: #404040;
+    z-index: 0;
+    translate: -10vh -10vh;
+    font-family: "Pokemon classic";
+}
+.footer{
+    flex: 2.5;
+    margin: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: row;
+
+    /*height: 100%;*/
+    /*width: 100%;*/
+
+
+    background-image: url("images/misc/footerBox.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.text{
+    margin: 0;
+    padding: 0;
+}
+
+#footerText{
+    font-family: "Pokemon classic";
+    font-size: 70px;
+    color: azure;
+    translate: 10vh 6vh;
+}
+#footerTextShadow{
+    position:absolute;
+    font-family: "Pokemon classic";
+    font-size: 70px;
+    color: #685970;
+    translate: 10.7vh 6vh;
+}
+.leftUpperContainer{
+    translate: -50vh;
+    display: flex;
+    flex-direction: column;
+}
+.nameBoxContainer{
+    translate: -30vh 7vh;
+}
+#trainerSprite{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    height: 50%;
+    width: 350%;
+    translate: 0 18.3vh;
+}
+#nameBoxImage {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    translate: -14vh 5vh;
+    height: 80%;
+    width: 650%;
+}
+.optionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 4;
+
+    background-image: url("images/misc/rightFooter.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.upperOptions{
+    display: flex;
+    flex-direction: row;
+
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    translate: 0 5vh;
+}
+.menuButton {
+    background:none;
+    border:none;
+
+    padding:0;
+    cursor: pointer;
+
+    font-family: "Pokemon classic";
+    font-size: 70px;
+    color: #2c2c2c;
+}
+#catchButton{
+    translate: -10vh;
+}
+#pokeListButton{
+    translate: 10vh;
+}
+#searchButton{
+    translate:0 4vh;
+}
+</style>
+
+
+<div class = "allContentContainer">
+
+    <div class = "upper">
+        <img id = "currentPokeImage" src="images/pokemon/0000.png" alt="bulbasaur">
+
+
+        <div class = "leftUpperContainer">
+            <div class ="nameBoxContainer">
+
+                <img id = "nameBoxImage" src="images/misc/nameBox.png" alt="nameBox">
+                <p id = pokeName>Bulbasaur</p>
+            </div>
+
+            <img id = "trainerSprite" src="images/misc/dawnBack.png" alt="trainerSprite">
+        </div>
+
+    </div>
+
+
+
+
+    <div class="footer">
+        <div class = "textContainer" style="flex:5">
+            <p id="footerTextShadow">What will you do?</p>
+            <p id="footerText">What will you do?</p>
+        </div>
+
+        <div class = "optionContainer">
+
+            <div class = "upperOptions">
+                <button id="catchButton" class="menuButton" >CATCH</button>
+                <button id="pokeListButton" class="menuButton" onclick="location.href='http://localhost:8080/pokeList.html'">POKEMON</button>
+            </div>
+            <div class = "lowerOptions">
+                <button id="searchButton" onclick="getPoke()" class="menuButton"> Search... </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
 
 <script>
     async function getPoke() {
@@ -22,7 +221,11 @@
             .then(
                 function(text){
                     let data = JSON.parse(text);
-                    document.getElementById("currentPokeImage").src = "images/pokemon/" + data.id.toString() + ".png";
+                    let photoId = data.id.toString();
+                    while(photoId.length < 4){
+                        photoId = "0" + photoId;
+                    }
+                    document.getElementById("currentPokeImage").src = "images/pokemon/" + photoId + ".png";
                 }
             );
     }
