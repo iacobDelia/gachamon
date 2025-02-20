@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml" xmlns:translate="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -85,16 +85,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.optionContainer{
-    flex: 4;
 
-    background-image: url("images/misc/rightFooter.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-}
 #footerText{
     font-family: "Pokemon classic";
     font-size: 70px;
@@ -132,6 +123,49 @@ body {
     height: 80%;
     width: 650%;
 }
+.optionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 4;
+
+    background-image: url("images/misc/rightFooter.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+.upperOptions{
+    display: flex;
+    flex-direction: row;
+
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+    translate: 0 5vh;
+}
+.menuButton {
+    background:none;
+    border:none;
+
+    padding:0;
+    cursor: pointer;
+
+    font-family: "Pokemon classic";
+    font-size: 70px;
+    color: #2c2c2c;
+}
+#catchButton{
+    translate: -10vh;
+}
+#pokeListButton{
+    translate: 10vh;
+}
+#searchButton{
+    translate:0 4vh;
+}
 </style>
 
 
@@ -165,9 +199,11 @@ body {
         <div class = "optionContainer">
 
             <div class = "upperOptions">
+                <button id="catchButton" class="menuButton" >CATCH</button>
+                <button id="pokeListButton" class="menuButton" onclick="location.href='http://localhost:8080/pokeList.html'">POKEMON</button>
             </div>
             <div class = "lowerOptions">
-                <button id="upload-button" onclick="getPoke()"> Get Poke </button>
+                <button id="searchButton" onclick="getPoke()" class="menuButton"> Search... </button>
             </div>
         </div>
 
