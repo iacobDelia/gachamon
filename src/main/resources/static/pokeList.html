@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Caught pokemon</title>
 </head>
 
 <style>
@@ -74,7 +74,7 @@
         height: 20%;
         width: 16%;
         z-index: 1;
-        opacity: 60%;
+        opacity: 30%;
     }
     #closeButton{
         position: absolute;
@@ -116,9 +116,7 @@
         }).then(result =>    result.text())
             .then(
                 function(text){
-                    alert(text);
                     pokeList = JSON.parse(text);
-                    alert(pokeList[0].pokedexNumber);
                 }
             );
     }

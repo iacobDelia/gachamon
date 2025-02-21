@@ -2,7 +2,7 @@
 <html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml" xmlns:translate="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Searching the wild</title>
 </head>
 <body>
 
@@ -179,7 +179,7 @@ body {
             <div class ="nameBoxContainer">
 
                 <img id = "nameBoxImage" src="images/misc/nameBox.png" alt="nameBox">
-                <p id = pokeName>Bulbasaur</p>
+                <p id = pokeName></p>
             </div>
 
             <img id = "trainerSprite" src="images/misc/dawnBack.png" alt="trainerSprite">
@@ -228,13 +228,14 @@ body {
                     this.name = data.name;
                     this.pokedexNumber = data.pokedexNumber;
 
-
-
                     let photoId = data.id.toString();
                     while(photoId.length < 4){
                         photoId = "0" + photoId;
                     }
                     document.getElementById("currentPokeImage").src = "images/pokemon/" + photoId + ".png";
+                    document.getElementById("footerText").textContent = "What will you do?";
+                    document.getElementById("footerTextShadow").textContent = "What will you do?";
+                    document.getElementById("pokeName").textContent = data.name;
                 }
             );
     }
@@ -255,7 +256,10 @@ body {
                 }
             }).then(response => response.text())
                 .then(function(text){
-                    alert(text);
+                    document.getElementById("footerText").textContent = "Gotcha! " + this.name.toString() + " was caught!";
+                    document.getElementById("footerTextShadow").textContent = "Gotcha! " + this.name.toString() + " was caught!";
+                    document.getElementById("currentPokeImage").src = "images/pokemon/ball.png";
+                    //alert(text);
                 })
         }
     }
