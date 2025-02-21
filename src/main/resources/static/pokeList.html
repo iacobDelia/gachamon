@@ -12,6 +12,11 @@
     }
     body {
         background-image: url("images/misc/boxBackground.png");
+        background-size: 50% 120%;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+
     }
     #box {
         position: absolute;
@@ -70,14 +75,27 @@
         width: 16%;
         z-index: 1;
     }
+    #closeButton{
+        position: absolute;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        height: 8%;
+        width: 15%;
+        cursor: pointer;
+
+        translate: 50vh 6vh;
+    }
 </style>
 <body onload="updatePokes()">
     <img id = "box" src="images/misc/box1.png" alt="box">
     <img id = "rightArrow" src="images/misc/boxArrowRight.png" alt="rightArrow" class="arrow" onclick="changeBox(1)">
     <img id = "leftArrow" src="images/misc/boxArrowLeft.png" alt="leftArrow" class="arrow" onclick="changeBox(-1)">
+    <img id = "closeButton" src="images/misc/closeBox.png" alt="closeBox" onclick="location.href='http://localhost:8080/wild.html'">
 
     <p id="boxNameShadow" class="boxText">Box 1</p>
     <p id="boxName" class="boxText">Box 1</p>
+
     <div id = "pokeContainer">
     </div>
 
