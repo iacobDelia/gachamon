@@ -1,26 +1,32 @@
 [
   {
     "id": null,
-    "name": "Bulbasaur"
+    "name": "Bulbasaur",
+    "pokedexNumber": 1
   },
   {
     "id": null,
-    "name": "Ivysaur"
+    "name": "Ivysaur",
+    "pokedexNumber": 2
   },
   {
     "id": null,
-    "name": "Venusaur"
+    "name": "Venusaur",
+    "pokedexNumber": 3
   },
   {
     "id": null,
-    "name": "Charmander"
+    "name": "Charmander",
+    "pokedexNumber": 4
   },
   {
     "id": null,
-    "name": "Charmeleon"
+    "name": "Charmeleon",
+    "pokedexNumber": 5
   },
   {
     "id": null,
-    "name": "Charizard"
+    "name": "Charizard",
+    "pokedexNumber": 6
   }
 ]

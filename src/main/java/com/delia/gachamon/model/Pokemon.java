@@ -13,20 +13,31 @@ public class Pokemon{
         Integer id;
         @Column(value="NAME")
         String name;
+        @Column(value="POKEDEXNUMBER")
+        int pokedexNumber;
 
-        public Pokemon(Integer id, String name) {
+        public Pokemon(Integer id, String name, int pokedexNumber) {
                 this.id = id;
                 this.name = name;
+                this.pokedexNumber = pokedexNumber;
         }
 
+        public void setId(Integer id) {
+                this.id = id;
+        }
+
+        public int getPokedexNumber() {
+                return pokedexNumber;
+        }
+
+        public void setPokedexNumber(int pokedexNumber) {
+                this.pokedexNumber = pokedexNumber;
+        }
 
         public int getId() {
                 return id;
         }
 
-        public void setId(int id) {
-                this.id = id;
-        }
 
         public String getName() {
                 return name;
@@ -36,14 +47,12 @@ public class Pokemon{
                 this.name = name;
         }
 
-
-
-
         @Override
         public String toString() {
                 return "Pokemon{" +
                         "id=" + id +
                         ", name='" + name + '\'' +
+                        ", pokedexNumber=" + pokedexNumber +
                         '}';
         }
 }
