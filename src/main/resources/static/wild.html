@@ -32,21 +32,15 @@ body {
 .upper{
     background-image: url("images/misc/GrassyField.webp");
     background-repeat: no-repeat;
-    /*background-attachment: fixed;*/
-    /*background-clip: border-box;*/
     background-size: 100% 100%;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
-
     flex:7.5;
     display: flex;
-    /*height: 100%;*/
-    /*width: 100%;*/
-    flex-direction: row-reverse;
-    /*flex-shrink: 0;*/
 
+    flex-direction: row-reverse;
 }
 
 .allContentContainer {
@@ -69,10 +63,6 @@ body {
     padding-top: 0;
     display: flex;
     flex-direction: row;
-
-    /*height: 100%;*/
-    /*width: 100%;*/
-
 
     background-image: url("images/misc/footerBox.png");
     background-repeat: no-repeat;
@@ -141,7 +131,6 @@ body {
     display: flex;
     flex-direction: row;
 
-
     justify-content: space-between;
     flex-wrap: wrap;
     translate: 0 5vh;
@@ -168,13 +157,10 @@ body {
 }
 </style>
 
-
 <div class = "allContentContainer">
 
     <div class = "upper">
         <img id = "currentPokeImage" src="images/pokemon/0000.png" alt="bulbasaur">
-
-
         <div class = "leftUpperContainer">
             <div class ="nameBoxContainer">
 
@@ -188,8 +174,6 @@ body {
     </div>
 
 
-
-
     <div class="footer">
         <div class = "textContainer" style="flex:5">
             <p id="footerTextShadow">What will you do?</p>
@@ -197,7 +181,6 @@ body {
         </div>
 
         <div class = "optionContainer">
-
             <div class = "upperOptions">
                 <button id="catchButton" class="menuButton" onclick="catchPoke()">CATCH</button>
                 <button id="pokeListButton" class="menuButton" onclick="location.href='http://localhost:8080/pokeList.html'">POKEMON</button>
@@ -206,8 +189,6 @@ body {
                 <button id="searchButton" onclick="getPoke()" class="menuButton"> Search... </button>
             </div>
         </div>
-
-
     </div>
 </div>
 
@@ -259,13 +240,9 @@ body {
                     document.getElementById("footerText").textContent = "Gotcha! " + this.name.toString() + " was caught!";
                     document.getElementById("footerTextShadow").textContent = "Gotcha! " + this.name.toString() + " was caught!";
                     document.getElementById("currentPokeImage").src = "images/pokemon/ball.png";
-                    //alert(text);
                 })
         }
     }
 </script>
-
-
-
 </body>
 </html>

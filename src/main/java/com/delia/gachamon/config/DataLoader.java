@@ -15,12 +15,10 @@ import java.util.List;
 @Component
 public class DataLoader implements CommandLineRunner {
     private final WildPokeRepository repository;
-    private final CaughtRepository caughtRepository;
     private final ObjectMapper objectMapper;
 
-    public DataLoader(WildPokeRepository repository, CaughtRepository caughtRepository, ObjectMapper objectMapper) {
+    public DataLoader(WildPokeRepository repository, ObjectMapper objectMapper) {
         this.repository = repository;
-        this.caughtRepository = caughtRepository;
         this.objectMapper = objectMapper;
     }
 
