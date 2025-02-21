@@ -3,3 +3,12 @@ GET http://localhost:8080/wild
 
 ### Find by ID
 GET http://localhost:8080/wild/2
+
+### Post pokemon
+POST http://localhost:8080/wild/catch
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Bulbasaur"
+}

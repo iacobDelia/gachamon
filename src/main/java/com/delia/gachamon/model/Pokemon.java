@@ -13,23 +13,31 @@ public class Pokemon{
         Integer id;
         @Column(value="NAME")
         String name;
-        @Column(value="APPEARPOWER")
-        int appearPower;
+        @Column(value="POKEDEXNUMBER")
+        int pokedexNumber;
 
-        public Pokemon(Integer id, String name, int appearPower) {
+        public Pokemon(Integer id, String name, int pokedexNumber) {
                 this.id = id;
                 this.name = name;
-                this.appearPower = appearPower;
+                this.pokedexNumber = pokedexNumber;
         }
 
+        public void setId(Integer id) {
+                this.id = id;
+        }
+
+        public int getPokedexNumber() {
+                return pokedexNumber;
+        }
+
+        public void setPokedexNumber(int pokedexNumber) {
+                this.pokedexNumber = pokedexNumber;
+        }
 
         public int getId() {
                 return id;
         }
 
-        public void setId(int id) {
-                this.id = id;
-        }
 
         public String getName() {
                 return name;
@@ -39,20 +47,12 @@ public class Pokemon{
                 this.name = name;
         }
 
-        public int getAppearPower() {
-                return appearPower;
-        }
-
-        public void setAppearPower(int appearPower) {
-                this.appearPower = appearPower;
-        }
-
         @Override
         public String toString() {
                 return "Pokemon{" +
                         "id=" + id +
                         ", name='" + name + '\'' +
-                        ", appearPower=" + appearPower +
+                        ", pokedexNumber=" + pokedexNumber +
                         '}';
         }
 }

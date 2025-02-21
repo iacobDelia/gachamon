@@ -2,7 +2,7 @@
 <html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml" xmlns:translate="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Searching the wild</title>
 </head>
 <body>
 
@@ -32,21 +32,15 @@ body {
 .upper{
     background-image: url("images/misc/GrassyField.webp");
     background-repeat: no-repeat;
-    /*background-attachment: fixed;*/
-    /*background-clip: border-box;*/
     background-size: 100% 100%;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
-
     flex:7.5;
     display: flex;
-    /*height: 100%;*/
-    /*width: 100%;*/
-    flex-direction: row-reverse;
-    /*flex-shrink: 0;*/
 
+    flex-direction: row-reverse;
 }
 
 .allContentContainer {
@@ -69,10 +63,6 @@ body {
     padding-top: 0;
     display: flex;
     flex-direction: row;
-
-    /*height: 100%;*/
-    /*width: 100%;*/
-
 
     background-image: url("images/misc/footerBox.png");
     background-repeat: no-repeat;
@@ -141,7 +131,6 @@ body {
     display: flex;
     flex-direction: row;
 
-
     justify-content: space-between;
     flex-wrap: wrap;
     translate: 0 5vh;
@@ -168,26 +157,21 @@ body {
 }
 </style>
 
-
 <div class = "allContentContainer">
 
     <div class = "upper">
         <img id = "currentPokeImage" src="images/pokemon/0000.png" alt="bulbasaur">
-
-
         <div class = "leftUpperContainer">
             <div class ="nameBoxContainer">
 
                 <img id = "nameBoxImage" src="images/misc/nameBox.png" alt="nameBox">
-                <p id = pokeName>Bulbasaur</p>
+                <p id = pokeName></p>
             </div>
 
             <img id = "trainerSprite" src="images/misc/dawnBack.png" alt="trainerSprite">
         </div>
 
     </div>
-
-
 
 
     <div class="footer">
@@ -197,22 +181,22 @@ body {
         </div>
 
         <div class = "optionContainer">
-
             <div class = "upperOptions">
-                <button id="catchButton" class="menuButton" >CATCH</button>
+                <button id="catchButton" class="menuButton" onclick="catchPoke()">CATCH</button>
                 <button id="pokeListButton" class="menuButton" onclick="location.href='http://localhost:8080/pokeList.html'">POKEMON</button>
             </div>
             <div class = "lowerOptions">
                 <button id="searchButton" onclick="getPoke()" class="menuButton"> Search... </button>
             </div>
         </div>
-
-
     </div>
 </div>
 
 
 <script>
+    var id = 0;
+    var name = "no name";
+    var number = 0;
     async function getPoke() {
         // changes the image source
         await fetch('http://localhost:8080/wild/getPoke', {
@@ -221,17 +205,44 @@ body {
             .then(
                 function(text){
                     let data = JSON.parse(text);
+                    this.id = data.id;
+                    this.name = data.name;
+                    this.pokedexNumber = data.pokedexNumber;
+
                     let photoId = data.id.toString();
                     while(photoId.length < 4){
                         photoId = "0" + photoId;
                     }
                     document.getElementById("currentPokeImage").src = "images/pokemon/" + photoId + ".png";
+                    document.getElementById("footerText").textContent = "What will you do?";
+                    document.getElementById("footerTextShadow").textContent = "What will you do?";
+                    document.getElementById("pokeName").textContent = data.name;
                 }
             );
     }
+    async function catchPoke() {
+        if(this.id == 0){
+            alert("no poke");
+        }
+        else {
+            await fetch('http://localhost:8080/wild/catch', {
+                method: "POST",
+                body: JSON.stringify({
+                    Id: this.id,
+                    name: this.name,
+                    pokedexNumber: this.pokedexNumber
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then(response => response.text())
+                .then(function(text){
+                    document.getElementById("footerText").textContent = "Gotcha! " + this.name.toString() + " was caught!";
+                    document.getElementById("footerTextShadow").textContent = "Gotcha! " + this.name.toString() + " was caught!";
+                    document.getElementById("currentPokeImage").src = "images/pokemon/ball.png";
+                })
+        }
+    }
 </script>
-
-
-
 </body>
 </html>
