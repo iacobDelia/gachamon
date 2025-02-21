@@ -199,7 +199,7 @@ body {
         <div class = "optionContainer">
 
             <div class = "upperOptions">
-                <button id="catchButton" class="menuButton" >CATCH</button>
+                <button id="catchButton" class="menuButton" onclick="catchPoke()">CATCH</button>
                 <button id="pokeListButton" class="menuButton" onclick="location.href='http://localhost:8080/pokeList.html'">POKEMON</button>
             </div>
             <div class = "lowerOptions">
@@ -213,6 +213,8 @@ body {
 
 
 <script>
+    var id = 0;
+    var name = "no name";
     async function getPoke() {
         // changes the image source
         await fetch('http://localhost:8080/wild/getPoke', {
@@ -221,6 +223,9 @@ body {
             .then(
                 function(text){
                     let data = JSON.parse(text);
+                    this.id = data.id;
+                    this.name = data.name;
+
                     let photoId = data.id.toString();
                     while(photoId.length < 4){
                         photoId = "0" + photoId;
@@ -228,6 +233,27 @@ body {
                     document.getElementById("currentPokeImage").src = "images/pokemon/" + photoId + ".png";
                 }
             );
+    }
+    async function catchPoke() {
+        if(this.id == 0){
+            alert("no poke");
+        }
+        else {
+            await fetch('http://localhost:8080/wild/catch', {
+                method: "POST",
+                body: JSON.stringify({
+                    Id: this.id,
+                    name: this.name
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then(response => response.text())
+                .then(function(text){
+                    alert(text);
+                })
+        }
+
     }
 </script>
 

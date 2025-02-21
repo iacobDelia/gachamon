@@ -13,13 +13,10 @@ public class Pokemon{
         Integer id;
         @Column(value="NAME")
         String name;
-        @Column(value="APPEARPOWER")
-        int appearPower;
 
-        public Pokemon(Integer id, String name, int appearPower) {
+        public Pokemon(Integer id, String name) {
                 this.id = id;
                 this.name = name;
-                this.appearPower = appearPower;
         }
 
 
@@ -39,20 +36,14 @@ public class Pokemon{
                 this.name = name;
         }
 
-        public int getAppearPower() {
-                return appearPower;
-        }
 
-        public void setAppearPower(int appearPower) {
-                this.appearPower = appearPower;
-        }
+
 
         @Override
         public String toString() {
                 return "Pokemon{" +
                         "id=" + id +
                         ", name='" + name + '\'' +
-                        ", appearPower=" + appearPower +
                         '}';
         }
 }

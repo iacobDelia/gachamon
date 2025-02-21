@@ -1,32 +1,26 @@
 [
   {
     "id": null,
-    "name": "Bulbasaur",
-    "appearPower": 70
+    "name": "Bulbasaur"
   },
   {
     "id": null,
-    "name": "Ivysaur",
-    "appearPower": 30
+    "name": "Ivysaur"
   },
   {
     "id": null,
-    "name": "Venusaur",
-    "appearPower": 10
+    "name": "Venusaur"
   },
   {
     "id": null,
-    "name": "Charmander",
-    "appearPower": 70
+    "name": "Charmander"
   },
   {
     "id": null,
-    "name": "Charmeleon",
-    "appearPower": 40
+    "name": "Charmeleon"
   },
   {
     "id": null,
-    "name": "Charizard",
-    "appearPower": 5
+    "name": "Charizard"
   }
 ]

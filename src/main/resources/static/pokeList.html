@@ -87,7 +87,7 @@
         translate: 50vh 6vh;
     }
 </style>
-<body onload="updatePokes()">
+<body>
     <img id = "box" src="images/misc/box1.png" alt="box">
     <img id = "rightArrow" src="images/misc/boxArrowRight.png" alt="rightArrow" class="arrow" onclick="changeBox(1)">
     <img id = "leftArrow" src="images/misc/boxArrowLeft.png" alt="leftArrow" class="arrow" onclick="changeBox(-1)">
@@ -103,7 +103,23 @@
 <script>
     var currentBox = 1;
     var numMaxBoxes = 6;
+    var pokeList;
 
+    window.onload=function(){
+        loadPokes();
+        updatePokes();
+    }
+
+    async function loadPokes(){
+        await fetch('http://localhost:8080/box/all', {
+            method: "GET"
+        }).then(result =>    result.text())
+            .then(
+                function(text){
+                    alert(text);
+                }
+            );
+    }
     function changeBox(num) {
         if (this.currentBox + num > 0 && this.currentBox + num <= numMaxBoxes) {
             this.currentBox += num;

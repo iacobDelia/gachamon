@@ -1,6 +1,7 @@
 package com.delia.gachamon.config;
 
 import com.delia.gachamon.model.Pokemon;
+import com.delia.gachamon.repository.CaughtRepository;
 import com.delia.gachamon.repository.WildPokeRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -14,10 +15,12 @@ import java.util.List;
 @Component
 public class DataLoader implements CommandLineRunner {
     private final WildPokeRepository repository;
+    private final CaughtRepository caughtRepository;
     private final ObjectMapper objectMapper;
 
-    public DataLoader(WildPokeRepository repository, ObjectMapper objectMapper) {
+    public DataLoader(WildPokeRepository repository, CaughtRepository caughtRepository, ObjectMapper objectMapper) {
         this.repository = repository;
+        this.caughtRepository = caughtRepository;
         this.objectMapper = objectMapper;
     }
 
@@ -25,7 +28,6 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if(repository.count() == 0) {
             try (InputStream inputStream = TypeReference.class.getResourceAsStream("/data/Pokemon.json")) {
-
                 repository.saveAll(objectMapper.readValue(inputStream, new TypeReference<List<Pokemon>>(){}));
             }
         }
