@@ -12,6 +12,11 @@
     }
     body {
         background-image: url("images/misc/boxBackground.png");
+        background-size: 50% 120%;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+
     }
     #box {
         position: absolute;
@@ -50,21 +55,54 @@
         translate: 87.5vh 10vh;
         color: #44503f;
     }
+    #pokeContainer{
+        display: flex;
+        flex-wrap: wrap;
 
+
+        translate: 51vh 23vh;
+        height: 55vh;
+        width: 85.5vh;
+
+    }
+    .pokeIcon{
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        margin: 0;
+        padding: 0;
+        height: 20%;
+        width: 16%;
+        z-index: 1;
+    }
+    #closeButton{
+        position: absolute;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+        height: 8%;
+        width: 15%;
+        cursor: pointer;
+
+        translate: 50vh 6vh;
+    }
 </style>
-<body>
+<body onload="updatePokes()">
     <img id = "box" src="images/misc/box1.png" alt="box">
     <img id = "rightArrow" src="images/misc/boxArrowRight.png" alt="rightArrow" class="arrow" onclick="changeBox(1)">
     <img id = "leftArrow" src="images/misc/boxArrowLeft.png" alt="leftArrow" class="arrow" onclick="changeBox(-1)">
+    <img id = "closeButton" src="images/misc/closeBox.png" alt="closeBox" onclick="location.href='http://localhost:8080/wild.html'">
 
     <p id="boxNameShadow" class="boxText">Box 1</p>
     <p id="boxName" class="boxText">Box 1</p>
 
+    <div id = "pokeContainer">
+    </div>
 
 </body>
 <script>
     var currentBox = 1;
-    var numMaxBoxes = 2;
+    var numMaxBoxes = 6;
 
     function changeBox(num) {
         if (this.currentBox + num > 0 && this.currentBox + num <= numMaxBoxes) {
@@ -72,10 +110,35 @@
             document.getElementById("box").src = "images/misc/box" + this.currentBox.toString() + ".png";
             document.getElementById("boxName").textContent = "Box " + this.currentBox.toString();
             document.getElementById("boxNameShadow").textContent = "Box " + this.currentBox.toString();
-
+            updatePokes();
         }
     }
+    function updatePokes(){
+        let start = (currentBox - 1) * 30 + 1;
+        let end = currentBox * 30;
+        let div = document.getElementById("pokeContainer");
+        div.innerHTML = '';
 
+        for(let i = start; i <= end; i++) {
+            if(i == 152)
+                break;
+            var image = document.createElement("img");
+
+            // get file name
+            fileName = i.toString();
+            while(fileName.length < 4){
+                fileName = "0" + fileName;
+            }
+            fileName = "images/pokemonTiny/" + fileName + ".png";
+
+            // set image properties
+            image.src = fileName;
+            image.classList.add('pokeIcon');
+
+            // add to the div
+            div.appendChild(image);
+        }
+    }
 
 
 </script>
