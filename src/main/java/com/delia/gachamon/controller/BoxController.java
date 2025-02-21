@@ -18,7 +18,6 @@ public class BoxController {
     }
     @GetMapping("/all")
     public List<PokemonCaught> findAll(){
-        System.out.println(caughtRepository.findAll());
         return caughtRepository.findAll();
     }
 }

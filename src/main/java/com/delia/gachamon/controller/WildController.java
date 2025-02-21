@@ -28,7 +28,6 @@ public class WildController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @GetMapping("")
     public List<Pokemon> findAll(){
-        System.out.println(repository.findAll());
         return repository.findAll();
     }
     @GetMapping("/{id}")
