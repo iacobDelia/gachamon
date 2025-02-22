@@ -222,7 +222,9 @@ body {
     }
     async function catchPoke() {
         if(this.id == 0){
-            alert("no poke");
+            document.getElementById("footerText").textContent = "No pokemon to catch!";
+            document.getElementById("footerTextShadow").textContent = "No pokemon to catch!";
+
         }
         else {
             await fetch('http://localhost:8080/wild/catch', {
